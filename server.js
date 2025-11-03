@@ -27,33 +27,15 @@ const FORCE_DETAILED_RESPONSES = true; // Set to false to disable auto-injected 
 const ENABLE_TOKEN_OPTIMIZER = true; // Set to false to disable
 const MAX_MESSAGES_TO_KEEP = 20; // How many recent messages to keep (adjust as needed)
 
-// Model mapping - organized by use case for Janitor AI
+// Model mapping (adjust based on available NIM models)
 const MODEL_MAPPING = {
-  // Main chat models (best for roleplay)
-  'gpt-3.5-turbo': 'deepseek-ai/deepseek-v3.1',
-  'gpt-4': 'deepseek-ai/deepseek-v3.1',
-  'gpt-4-turbo': 'meta/llama-3.3-70b-instruct',
+  'gpt-3.5-turbo': 'nvidia/llama-3.1-nemotron-ultra-253b-v1',
+  'gpt-4': 'qwen/qwen3-coder-480b-a35b-instruct',
+  'gpt-4-turbo': 'moonshotai/kimi-k2-instruct-0905',
   'gpt-4o': 'deepseek-ai/deepseek-v3.1',
-  'claude-3-opus': 'meta/llama-3.1-405b-instruct',
-  'claude-3-sonnet': 'meta/llama-3.1-70b-instruct',
-  'gemini-pro': 'qwen/qwen3-next-80b-a3b-thinking',
-  
-  // Reasoning models (for complex scenarios)
-  'deepseek-r1': 'deepseek-ai/deepseek-r1',
-  'qwen-thinking': 'qwen/qwen3-next-80b-a3b-thinking',
-  
-  // Coding scenarios
-  'gpt-4-code': 'qwen/qwen3-coder-480b-a35b-instruct',
-  'deepseek-coder': 'deepseek-ai/deepseek-coder-v2.5',
-  
-  // Creative/varied responses
-  'mistral': 'mistralai/mistral-small-3.1',
-  'phi-4': 'microsoft/phi-4',
-  
-  // Fallbacks
-  'llama-405b': 'meta/llama-3.1-405b-instruct',
-  'llama-70b': 'meta/llama-3.1-70b-instruct',
-  'llama-8b': 'meta/llama-3.1-8b-instruct'
+  'claude-3-opus': 'openai/gpt-oss-120b',
+  'claude-3-sonnet': 'openai/gpt-oss-20b',
+  'gemini-pro': 'qwen/qwen3-next-80b-a3b-thinking' 
 };
 
 // System prompt to encourage detailed responses

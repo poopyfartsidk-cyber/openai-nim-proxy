@@ -8,7 +8,8 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '50mb' })); // Increased payload limit for long conversations
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // NVIDIA NIM API configuration
 const NIM_API_BASE = process.env.NIM_API_BASE || 'https://integrate.api.nvidia.com/v1';
@@ -35,7 +36,15 @@ const MODEL_MAPPING = {
   'gpt-4o': 'deepseek-ai/deepseek-v3.1',
   'claude-3-opus': 'openai/gpt-oss-120b',
   'claude-3-sonnet': 'openai/gpt-oss-20b',
-  'gemini-pro': 'qwen/qwen3-next-80b-a3b-thinking' 
+  'gemini-pro': 'qwen/qwen3-next-80b-a3b-thinking',
+  
+  // Additional models for more personality/variety
+  'llama-405b': 'meta/llama-3.1-405b-instruct',
+  'llama-70b': 'meta/llama-3.1-70b-instruct',
+  'llama-3.3': 'meta/llama-3.3-70b-instruct',
+  'mistral': 'mistralai/mistral-small-3.1',
+  'deepseek-r1': 'deepseek-ai/deepseek-r1',
+  'phi-4': 'microsoft/phi-4'
 };
 
 // System prompt to encourage detailed responses
@@ -48,7 +57,9 @@ app.get('/health', (req, res) => {
     service: 'OpenAI to NVIDIA NIM Proxy', 
     reasoning_display: SHOW_REASONING,
     thinking_mode: ENABLE_THINKING_MODE,
-    detailed_responses: FORCE_DETAILED_RESPONSES
+    detailed_responses: FORCE_DETAILED_RESPONSES,
+    token_optimizer: ENABLE_TOKEN_OPTIMIZER,
+    max_messages_kept: MAX_MESSAGES_TO_KEEP
   });
 });
 
@@ -112,6 +123,18 @@ app.post('/v1/chat/completions', async (req, res) => {
           ...messages
         ];
       }
+    }
+    
+    // NEW: Token optimizer - trim old messages to save credits
+    if (ENABLE_TOKEN_OPTIMIZER && processedMessages.length > MAX_MESSAGES_TO_KEEP + 1) {
+      const systemMessages = processedMessages.filter(m => m.role === 'system');
+      const nonSystemMessages = processedMessages.filter(m => m.role !== 'system');
+      
+      // Keep system messages + last N user/assistant messages
+      const recentMessages = nonSystemMessages.slice(-MAX_MESSAGES_TO_KEEP);
+      processedMessages = [...systemMessages, ...recentMessages];
+      
+      console.log(`Token optimizer: Trimmed from ${messages.length} to ${processedMessages.length} messages`);
     }
     
     // Transform OpenAI request to NIM format

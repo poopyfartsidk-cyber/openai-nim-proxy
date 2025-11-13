@@ -25,7 +25,7 @@ const ENABLE_THINKING_MODE = false; // Set to true to enable chat_template_kwarg
 const FORCE_DETAILED_RESPONSES = true; // Set to false to disable auto-injected system prompt
 
 // 🔥 TOKEN OPTIMIZER - Trims old messages to save credits
-const ENABLE_TOKEN_OPTIMIZER = true; // Set to false to disable
+const ENABLE_TOKEN_OPTIMIZER = false; // Set to false to disable
 const MAX_MESSAGES_TO_KEEP = 20; // How many recent messages to keep (adjust as needed)
 
 // Model mapping (adjust based on available NIM models)

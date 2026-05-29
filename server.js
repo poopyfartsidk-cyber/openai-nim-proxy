@@ -35,7 +35,7 @@ const MODEL_MAPPING = {
   'gpt-4-turbo': 'deepseek-ai/deepseek-v4-pro',
   'gpt-4o': 'z-ai/glm-5.1',
   'claude-3-opus': 'meta/llama-3.1-70b-instruct',
-  'claude-3-sonnet': 'openai/gpt-oss-20b',
+  'claude-3-sonnet': 'nvidia/nemotron-mini-4b-instruct',
   'gemini-pro': 'qwen/qwen3.5-122b-a10b',
   
   // Additional models for more personality/variety

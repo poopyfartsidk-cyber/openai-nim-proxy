@@ -36,7 +36,7 @@ const MODEL_MAPPING = {
   'gpt-4o': 'z-ai/glm-5.1',
   'claude-3-opus': 'meta/llama-3.1-70b-instruct',
   'claude-3-sonnet': 'mistralai/mistral-large-3-675b-instruct-2512',
-  'gemini-pro': 'qwen/qwen3.5-122b-a10b',
+  'gemini-pro': 'minimaxai/minimax-m3',
   
   // Additional models for more personality/variety
   'llama-405b': 'meta/llama-3.1-405b-instruct',

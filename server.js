@@ -32,7 +32,7 @@ const MAX_MESSAGES_TO_KEEP = 20; // How many recent messages to keep (adjust as 
 const MODEL_MAPPING = {
   'gpt-3.5-turbo': 'minimaxai/minimax-m2.7',
   'gpt-4': 'moonshotai/kimi-k2.6',
-  'gpt-4-turbo': 'deepseek-ai/deepseek-v4-pro',
+  'gpt-4-turbo': 'deepseek-ai/deepseek-v4-flash',
   'gpt-4o': 'z-ai/glm-5.1',
   'claude-3-opus': 'meta/llama-3.1-70b-instruct',
   'claude-3-sonnet': 'mistralai/mistral-large-3-675b-instruct-2512',

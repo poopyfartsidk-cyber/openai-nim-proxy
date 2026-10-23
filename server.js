@@ -31,9 +31,9 @@ const MAX_MESSAGES_TO_KEEP = 20; // How many recent messages to keep (adjust as 
 // Model mapping (adjust based on available NIM models)
 const MODEL_MAPPING = {
   'gpt-3.5-turbo': 'meta/muse-glimmer-30b',
-  'gpt-4': 'stepfun-ai/Step 5 Preview',
-  'gpt-4-turbo': 'deepseek-ai/deepseek-v4-flash',
-  'gpt-4o': 'deepseek-ai/deepseek-v4.1-flash',
+  'gpt-4': 'nvidia/nemotron-3-ultra-550b-a55b',
+  'gpt-4-turbo': 'nvidia/ising-calibration-1.5-31b',
+  'gpt-4o': 'poolside/laguna-xs-2.1',
   'claude-3-opus': 'minimaxai/minimax-m3.1-flash',
   'claude-3-sonnet': 'mistralai/mistral-large-3-675b-instruct-2512',
   'gemini-pro': 'qwen/qwen3.5-397b-a17b',
